@@ -1,17 +1,17 @@
 const WebSocket = require('ws');
 const { logger } = require('./logger');
 const url = require('url');
-const qs = require('qs');
 require("dotenv").config();
 
 const server = new WebSocket.Server({ port: process.env.WS_PORT });
 
 server.on('connection', (ws, req) => {
-    const queryParams = qs.parse(url.parse(req.url).query);
+    const pathname = url.parse(req.url).pathname;
+    const pathSegments = pathname.split('/').filter(segment => segment);
     console.log('New client connected');
     logger.info('New client connected');
-    console.log('Query parameters:', queryParams);
-    logger.info('Query parameters: ' + JSON.stringify(queryParams));
+    console.log('Path segments:', pathSegments);
+    logger.info('Path segments: ' + JSON.stringify(pathSegments));
 
     ws.on('message', message => {
         console.log(`Received: ${message}`);

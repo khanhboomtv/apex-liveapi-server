@@ -1,10 +1,10 @@
 const WebSocket = require('ws');
 require("dotenv").config();
 
-const ws = new WebSocket(`ws://${process.env.WS_ADDRESS}:${process.env.WS_PORT}/?token=12345&user_id=67890'`);
+const ws = new WebSocket(`ws://${process.env.WS_ADDRESS}:${process.env.WS_PORT}/1000`);
 
 ws.on('open', function open() {
-    console.log('connected');
+    console.log('Connected');
     ws.send('Hello Server!');
 });
 
