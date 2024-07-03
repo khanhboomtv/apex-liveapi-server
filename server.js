@@ -4,6 +4,7 @@ const { logger } = require('./logger');
 
 server.on('connection', ws => {
     console.log('New client connected');
+    logger.info('New client connected');
 
     ws.on('message', message => {
         console.log(`Received: ${message}`);
@@ -12,6 +13,7 @@ server.on('connection', ws => {
 
     ws.on('close', () => {
         console.log('Client disconnected');
+        logger.info('Client disconnected');
     });
 
     ws.send('Hi there, I am a WebSocket server');

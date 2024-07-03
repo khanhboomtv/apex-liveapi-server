@@ -1,6 +1,6 @@
 const WebSocket = require('ws');
 
-const ws = new WebSocket('ws://localhost:8080');
+const ws = new WebSocket('ws://ec2-44-234-50-193.us-west-2.compute.amazonaws.com:8080');
 
 ws.on('open', function open() {
     console.log('connected');
