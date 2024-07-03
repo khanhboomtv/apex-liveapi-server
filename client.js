@@ -1,6 +1,7 @@
 const WebSocket = require('ws');
+require("dotenv").config();
 
-const ws = new WebSocket('ws://ec2-54-123-45-67.compute-1.amazonaws.com:8081');
+const ws = new WebSocket(`ws://${process.env.WS_ADDRESS}:${process.env.WS_PORT}/?token=12345&user_id=67890'`);
 
 ws.on('open', function open() {
     console.log('connected');
