@@ -5,7 +5,8 @@ const ws = new WebSocket(`ws://${process.env.WS_ADDRESS}:${process.env.WS_PORT}/
 
 ws.on('open', function open() {
     console.log('Connected');
-    ws.send('Hello Server!');
+    const jsonData = { type: 'greeting', message: 'Hello, server!' };
+    ws.send(JSON.stringify(jsonData));
 });
 
 ws.on('message', function incoming(data) {
